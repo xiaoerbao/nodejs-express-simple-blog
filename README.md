@@ -12,6 +12,9 @@
 # import database
 mongorestore ./data/blog
 
+# install module
+npm install
+
 # serve with hot reload at localhost:8080
 node index.js start
 
