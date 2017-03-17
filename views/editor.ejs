@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>木棉博客editor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/signin.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/javascripts/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/javascripts/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/editor/css/editormd.min.css" />
+  </head>
+
+  <body>
+
+    <div class="container">
+	<div class="page-header">
+	    <h1>Welcome to Management<small></small></h1>
+	</div>
+	<hr/>
+	<div class="row">
+	    <div class="col-md-2">
+		<ul class="list-group">
+		    <li class="list-group-item"><a href="/manager">Manage Blog</a></li>
+		    <li class="list-group-item"><a href="/manager/editor">New Blog</a></li>
+		</ul>
+	    </div>
+	    <div class="col-md-10" style="border-left:1px solid #ffffff">
+		<div class="form-group">
+		    <label >博客标题</label>
+		    <input type="text" class="form-control" name="title" value="<%= info.title %>" id="title" placeholder="博客标题">
+		    <input type="hidden" id="id" name="id" value="<%= info._id %>"/>
+		</div>
+		<div class="form-group">
+		    <label >博客key</label>
+		    <input type="text" class="form-control" name="key" value="<%= info.key %>" id="key" placeholder="博客key">
+		</div>
+		<div class="form-group">
+		    <label >分类</label>
+		    <select class="form-control" id="catkey">
+			<% for(var i in tag){ %>
+			    <% if(tag[i].key == info.catkey){ %>
+			        <option value="<%= tag[i].key %>" selected><%= tag[i].name %></option>
+			    <% }else{ %>
+			        <option value="<%= tag[i].key %>"><%= tag[i].name %></option>
+			    <% } %>
+			<% } %>
+		    </select>
+		</div>
+		<div id="editormd">
+		    <textarea style="display:none;"><%= info.markdown %></textarea>
+		</div>
+		<div class="form-group">
+		    <button type="button" class="btn btn-default" onclick="submit();">Submit</button>
+		</div>
+	    </div>
+	</div>
+
+    </div> <!-- /container -->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/javascripts/ie10-viewport-bug-workaround.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/editor/editormd.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            window.editor = editormd("editormd", {
+	        width   : "100%",
+                height  : 640,
+                syncScrolling : "single",
+		saveHTMLToTextarea : true,
+                path : "/editor/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
+            });
+
+
+            /*
+            // or
+            var editor = editormd({
+                id   : "editormd",
+                path : "../lib/"
+            });
+            */
+        });
+        function submit(){
+	    var id = $("#id").val();
+            var markdown = window.editor.getMarkdown();
+            //var html = window.editor.getHTML();
+            var html = window.editor.getPreviewedHTML();
+	    var title = $("#title").val();
+	    var key = $("#key").val();
+	    var catkey = $("#catkey").val();
+	    if(!markdown || !title || !key || !catkey){
+		alert("all must input value");
+		return false;
+	    }
+	    var data = {'id':id,'markdown':markdown,'html':html,'title':title,'key':key,'catkey':catkey};
+	    $.post('/manager/editor',data,function(data){
+		alert(data.info);
+	    },'json');
+        }
+
+    </script>
+    <script>
+    </script>
+  </body>
+</html>

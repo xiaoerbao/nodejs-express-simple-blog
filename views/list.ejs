@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/markdown.css">
+  </head>
+  <body>
+    <div class="markdown-body">
+        <h1><%= title %></h1>
+	<ul>
+	<% for(var i in data){ %>
+	    <a href="/detail?key=<%= data[i].key %>"><li><h4><%= data[i].title %></h4></li></a><br/>
+	<% } %>
+	</ul>
+	<style>
+	    nav ul,li{list-style:none;}
+	    nav>ul>li{display:inline-block;padding:5px;border:1px solid #eeeeee;margin:2px;}
+	</style>
+	<% var pagenum = 5;if(cur < Math.ceil(pagenum/2)){var start = 1;}else{var start = cur - Math.floor(pagenum/2);} %>
+	<% var end = pagecount;if(pagecount > (start + pagenum - 1)){end = start + pagenum -1;} %>
+	<nav>
+	  <ul class="pagination">
+	    <% for(var i = start;i<=end;i++){ %>
+	         <li><a href="/?p=<%= i %>"><%= i %></a></li>
+	    <% } %>
+	  </ul>
+	</nav>
+    </div>
+  </body>
+</html>

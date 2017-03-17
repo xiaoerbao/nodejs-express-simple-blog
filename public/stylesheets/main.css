@@ -1,0 +1,155 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Helvetica Neue', 'Microsoft Jhenghei', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #269;
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+header {
+    text-align: center;
+}
+
+header a h1{
+    color: #333;
+}
+
+header a:hover {
+    color: #1d5884;
+    text-decoration: underline;
+}
+
+#go-back-home {
+    margin: 40px 0 0;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto auto;
+}
+
+ul.posts, ul.posts li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.posts li {
+    margin-bottom: 20px;
+}
+
+ul.posts, ul.posts li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.content h3 {
+    font-size: 1.6em;
+
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    margin-bottom: 0.4em;
+    line-height: 1.5;
+}
+
+ul.posts .datetime {
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    width: 150px;
+    text-transform: uppercase;
+    float: right;
+    color: #999;
+    font-size: 15px;
+    text-align: right;
+}
+
+.content a {
+    border-bottom: 1px solid #1abc9c;
+}
+
+.content a:hover {
+
+    border-bottom-color: #555;
+    color: #555;
+    text-decoration: none;
+    background: repeat-x left bottom;
+}
+
+.muted {
+    color: #8f8f8f;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+footer {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 0 30px;
+    text-align: center;
+}
+
+footer#about {
+    color: #8f8f8f;
+    text-align: left;
+}
+
+footer #powered-by{
+    font-size: 13px;
+    float: right;
+}
+
+footer a:hover {
+    color: #1abc9c;
+}
+
+#back-top{
+    position: fixed;
+    right: 10px;
+    bottom: 0;
+    font-size: 4em;
+    color: #333;
+}
+#back-top:hover{
+    color: #269;
+}
+.markdown-body{
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto auto;
+}
+.markdown-body h1 {
+    text-align: center;
+}
+
+@media (max-width: 480px){
+    body .content ul.posts .datetime {
+        float: none;
+        display: none;
+        width: auto;
+        text-align: left;
+    }
+}
