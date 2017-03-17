@@ -12,9 +12,10 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "express-session": "~1.13.0",
-    "morgan": "~1.6.1",
     "mongoose": "~4.4.4",
+    "morgan": "~1.6.1",
     "multer": "^1.1.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "trim-html": "^0.1.7"
   }
 }

@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var api = require('./routes/api');
 var bodyParser = require('body-parser');
 var multer = require('multer'); 
 var session = require('express-session');
@@ -36,4 +37,10 @@ app.get('/manager',users);
 app.get('/manager/editor',users);
 app.post('/manager/editor',users);
 
-app.listen('8080');
+//api router
+app.get('/api/list' , api);
+app.get('/api/detail' , api);
+app.get('/api/click' , api);
+app.get('/api/site' , api);
+
+app.listen('8081');
