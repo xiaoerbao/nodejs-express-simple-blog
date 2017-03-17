@@ -1,5 +1,10 @@
 #node express simple blog
 
+## Preview image
+
+ ![image](https://github.com/xiaoerbao/nodejs-express-simple-blog/blob/master/README/index.png)
+
+ ![image](https://github.com/xiaoerbao/nodejs-express-simple-blog/blob/master/README/detail.png)
 
 ## Build Setup
 
